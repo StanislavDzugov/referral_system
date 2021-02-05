@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Confirmation{% endblock title %}
+
+{% block content %}
+
+   <main class="form-signin">
+   {% include 'messages.html' %}
+  <form action="" method="POST">
+      {% csrf_token %}
+        <h1 class="h3 mb-3 fw-normal">Confirm your phone number</h1>
+        <label for="inputEmail" class="visually-hidden">Phone number</label>
+        <input type="number" class="form-control" placeholder="Confirmation code (Example: 1234)" min="1" max="9999" required autofocus>
+        <div class="checkbox mb-3">
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Confirm</button>
+      </form>
+</main>
+
+{% endblock content %}
+
