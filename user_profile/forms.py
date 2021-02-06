@@ -19,3 +19,14 @@ class CreateUserForm(ModelForm):
     class Meta:
         model = CustomUser
         fields = ['phone_number']
+
+    def validate_unique(self):
+        exclude = self._get_validation_exclusions()
+        try:
+            self.instance.validate_unique(exclude=exclude)
+        except forms.ValidationError as e:
+            try:
+                del e.error_dict['phone_number']
+            except:
+                pass
+            self._update_errors(e)
