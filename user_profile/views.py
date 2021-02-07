@@ -20,7 +20,6 @@ def register_view(request):
         form = forms.CreateUserForm(request.POST)
         if form.is_valid():
             request.session['phone_number'] = request.POST.get('phone_number')
-            request.session.set_expiry(60)
             return redirect('confirmation')
         else:
             messages.info(request, form.errors)
